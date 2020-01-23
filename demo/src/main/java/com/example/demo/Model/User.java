@@ -1,9 +1,10 @@
-package com.example.demo.Common;
+package com.example.demo.Model;
 
-import java.io.Serializable;
+import org.springframework.stereotype.Component;
 
-public class UserInfo implements Serializable {
-
+@Component
+public class User implements java.io.Serializable { 
+	
 	private Integer userId;
 	
 	private String userName;

@@ -11,26 +11,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Business.userBusiness;
 import com.example.demo.Common.UserInfo;
+import com.example.demo.Model.Result;
 import com.google.gson.Gson;
 
-@Controller
+@RestController
 @RequestMapping("/User")
 public class userController extends baseContoller {
 
-	userBusiness _userB = new userBusiness();	
+	Result result;
+	userBusiness _userB = new userBusiness();
 	
 	 /** 
 	  * 
 	  * API : test
 	  * 
 	  **/
-	 @RequestMapping("/")
-	 public String test(@RequestParam(value="title", required=false, defaultValue="Heylin") String title, Model model) {
-		 	        
-	        return "testing ,Page: User";
+	 @RequestMapping(value={"/test"})
+	 public Result test() {
+		 
+		 Result _result = new Result();
+		 Map _user = _userB.test_setuser();
+		 
+		 _result.setdata(_user);
+		 _result.setcode(200);
+		 _result.setmsg("ok");
+		 
+	     return _result;
 	 }
 	 
 	 /** 
@@ -38,7 +48,7 @@ public class userController extends baseContoller {
 	  * API : Search userlist
 	  * 
 	  **/
-	 @RequestMapping(value={"/search"}, method = RequestMethod.GET)
+	 @RequestMapping(value={"/"}, method = RequestMethod.GET)
 	 @ResponseBody
 	 public Map getUserList(HttpServletRequest req) {
 		 	
@@ -61,7 +71,7 @@ public class userController extends baseContoller {
 	  * API : Search one user
 	  * 
 	  **/
-	 @RequestMapping(value={"/search"}, method = RequestMethod.GET)
+	 @RequestMapping(value={"/{userId}"}, method = RequestMethod.GET)
 	 @ResponseBody
 	 public Map getUser(HttpServletRequest req,Integer userId) {
 		 	
@@ -84,7 +94,7 @@ public class userController extends baseContoller {
 	  * API : insert user
 	  * 
 	  **/
-	 @RequestMapping(value={"/add"}, method = RequestMethod.POST)
+	 @RequestMapping(value={"/"}, method = RequestMethod.POST)
 	 @ResponseBody
 	 public Map addUser(HttpServletRequest req){
 		 	
@@ -107,7 +117,7 @@ public class userController extends baseContoller {
 	  * API : modify user
 	  * 
 	  **/
-	 @RequestMapping(value={"/modify"}, method = RequestMethod.PUT)
+	 @RequestMapping(value={"/{userId}"}, method = RequestMethod.PUT)
 	 @ResponseBody
 	 public Map modifyUserPut(HttpServletRequest req){
 		 	
@@ -130,7 +140,7 @@ public class userController extends baseContoller {
 	  * API : modify user
 	  * 
 	  **/
-	 @RequestMapping(value={"/modify"}, method = RequestMethod.PATCH)
+	 @RequestMapping(value={"/{userId}"}, method = RequestMethod.PATCH)
 	 @ResponseBody
 	 public Map modifyUserPatch(HttpServletRequest req){
 		 	
@@ -153,7 +163,7 @@ public class userController extends baseContoller {
 	  * API : delete user
 	  * 
 	  **/
-	 @RequestMapping(value={"/delete"}, method = RequestMethod.DELETE)
+	 @RequestMapping(value={"/{userId}"}, method = RequestMethod.DELETE)
 	 @ResponseBody
 	 public Map deleteUser(HttpServletRequest req,Integer userId) {
 		

@@ -160,4 +160,20 @@ public class userBusiness extends baseBusiness{
 		
 		return resMap;
 	}
+
+	/** 
+	 * 
+	 * test function
+	 * 
+	 **/
+	public Map test_setuser() {
+		
+		Map _user =new HashMap();
+		
+		 _user.put("userId",1);
+		 _user.put("userName","Heylin");
+		 _user.put("userStatus","1");
+		
+		return _user;
+	}
 }
