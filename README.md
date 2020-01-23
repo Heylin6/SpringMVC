@@ -19,3 +19,7 @@ gson
 https://rx1226.pixnet.net/blog/post/300642542
 
 websocket
+
+SQL-nosql
+
+SQL-MariaDB
