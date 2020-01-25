@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="com.example.demo.common.UserInfo"/>
+<fullyQualifiedTypeName name="com.example.demo.Business.userBusiness"/>
+<fullyQualifiedTypeName name="com.example.demo.Common.UserInfo"/>
+<fullyQualifiedTypeName name="com.example.demo.Service.userService"/>
+<fullyQualifiedTypeName name="com.example.demo.Model.User"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="com.example.demo.Model.Result"/>
+</qualifiedTypeNameHistroy>

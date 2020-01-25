@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.example.demo.Common.UserInfo;
+import com.example.demo.Pagination.userPagination;
 import com.example.demo.Service.baseService;
 import com.example.demo.Service.userService;
 
@@ -19,7 +20,10 @@ public class userBusiness extends baseBusiness{
 	private static userService userS = new userService();
 	private static final String code = "user";
 	
-	public static Map BUSI_getUser(Map busi_m, UserInfo _u) {
+	public static Map BUSI_getUserList(Map busi_m, UserInfo _u) {
+		
+		//取多筆 => 放入分頁資訊
+		userPagination _userpagination = new userPagination();
 		
 		Map resMap = new HashMap();
 		Map dataMap = new HashMap();
@@ -33,6 +37,9 @@ public class userBusiness extends baseBusiness{
 			
 			dataMap = userS.SEV_getUserList(busi_m);
 			resMap.put("data",dataMap);
+			
+			//分頁 (邏輯待寫)
+			resMap.put("pagination","");
 			
 			resMap = FUNC_setFinalStatus(resMap,code,1);
 		}	

@@ -61,7 +61,7 @@ public class userController extends baseContoller {
 			String _jStr = req.getParameter("reqStr");
 			Map ctr_m = gs.fromJson(_jStr, Map.class);
 			
-			resMap = _userB.BUSI_getUser(ctr_m,_u);
+			resMap = _userB.BUSI_getUserList(ctr_m,_u);
 			
 			return resMap;
 	 }

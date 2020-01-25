@@ -1,10 +1,11 @@
 package com.example.demo.Service;
 
+import java.util.List;
 import java.util.Map;
 
-public class userService extends baseService{
+import com.example.demo.Pagination.userPagination;
 
-
+public class userService extends baseService{	
 
 	public Integer SEV_addUser(Map sev_m) {
 		
@@ -92,6 +93,4 @@ public class userService extends baseService{
 			return null;
 		}
 	}
-
-
 }
