@@ -7,6 +7,8 @@ Java SpringBoot
 參考:
 https://ithelp.ithome.com.tw/users/20107812/ironman/1538
 
+https://kknews.cc/zh-tw/code/q5a89v8.html
+
 小記:
 先前碰到的是已完成的系統
 都在維護上做變化而已
