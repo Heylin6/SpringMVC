@@ -14,6 +14,10 @@ https://kknews.cc/zh-tw/code/q5a89v8.html
 都在維護上做變化而已
 所以這次自己建構一個練習
 
+ORM - 
+
+user採用JPA(Java Persistence API)
+order採用
 
 其他:
 
