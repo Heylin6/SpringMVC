@@ -7,6 +7,8 @@ Java SpringBoot
 參考:
 https://ithelp.ithome.com.tw/users/20107812/ironman/1538
 
+https://blog.csdn.net/jianyuerensheng/article/details/51352184
+
 https://kknews.cc/zh-tw/code/q5a89v8.html
 
 小記:
@@ -16,8 +18,8 @@ https://kknews.cc/zh-tw/code/q5a89v8.html
 
 ORM - 
 
-user採用JPA(Java Persistence API)
-order採用
+user採用
+order採用JPA(Java Persistence API)
 
 其他:
 
