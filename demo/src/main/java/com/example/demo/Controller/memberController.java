@@ -1,5 +1,5 @@
 package com.example.demo.Controller;
 
-public class memberController {
+public class memberController extends baseContoller {
 
 }

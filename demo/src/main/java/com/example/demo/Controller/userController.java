@@ -5,8 +5,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,21 +22,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Business.userBusiness;
 import com.example.demo.Common.UserInfo;
 import com.example.demo.Model.Result;
+import com.example.demo.Model.User;
+import com.example.demo.Service.userService;
 import com.google.gson.Gson;
+
+/**
+ * 	寫法 : 請求 HttpServletRequest 轉成json解析
+ */
 
 @RestController
 @RequestMapping("/User")
 public class userController extends baseContoller {
 
-	Result result;
-	userBusiness _userB = new userBusiness();
+	Result result;	
+	
+	private userBusiness _userB = new userBusiness();
 	
 	 /** 
 	  * 
 	  * API : test
 	  * 
 	  **/
-	 @RequestMapping(value={"/test"})
+	 @GetMapping("/test")	
 	 public Result test() {
 		 
 		 Result _result = new Result();
@@ -48,21 +61,20 @@ public class userController extends baseContoller {
 	  * API : Search userlist
 	  * 
 	  **/
-	 @RequestMapping(value={"/"}, method = RequestMethod.GET)
-	 @ResponseBody
-	 public Map getUserList(HttpServletRequest req) {
+	 @GetMapping("/")
+	 public Map getAllUserList(HttpServletRequest req) {
 		 	
 		 	//init
 		 	Map resMap = new HashMap();
 		 	Gson gs = new Gson();
 		 	
 		 	//確認後台使用者資訊
-		 	UserInfo _u = getuserInfo(req);
-			String _jStr = req.getParameter("reqStr");
-			Map ctr_m = gs.fromJson(_jStr, Map.class);
-			
-			resMap = _userB.BUSI_getUserList(ctr_m,_u);
-			
+		 	UserInfo _u  = getuserInfo(req);
+		 	String _jStr = req.getParameter("reqStr");
+		 	Map ctr_m    = gs.fromJson(_jStr, Map.class);
+		 	
+		 	resMap = _userB.BUSI_getUserList(ctr_m,_u);
+		 	
 			return resMap;
 	 }
 	 
@@ -71,9 +83,8 @@ public class userController extends baseContoller {
 	  * API : Search one user
 	  * 
 	  **/
-	 @RequestMapping(value={"/{userId}"}, method = RequestMethod.GET)
-	 @ResponseBody
-	 public Map getUser(HttpServletRequest req,Integer userId) {
+	 @GetMapping("/{userId}")
+	 public Map getUser(@PathVariable("userId") Long userId,HttpServletRequest req) {
 		 	
 		 	//init
 		 	Map resMap = new HashMap();
@@ -94,20 +105,19 @@ public class userController extends baseContoller {
 	  * API : insert user
 	  * 
 	  **/
-	 @RequestMapping(value={"/"}, method = RequestMethod.POST)
-	 @ResponseBody
-	 public Map addUser(HttpServletRequest req){
+	 @PostMapping("/")
+	 public Map addUser(User _user){
 		 	
 		 	//init
 		 	Map resMap = new HashMap();
 		 	Gson gs = new Gson();
 		 	
 		 	//確認後台使用者資訊
-		 	UserInfo _u = getuserInfo(req);		 	
-			String _jStr = req.getParameter("reqStr");
-			Map ctr_m = gs.fromJson(_jStr, Map.class);
-		 	
-		 	resMap = _userB.BUSI_addUser(ctr_m,_u);
+//		 	UserInfo _u = getuserInfo(req);		 	
+//			String _jStr = req.getParameter("reqStr");
+//			Map ctr_m = gs.fromJson(_jStr, Map.class);
+//		 	
+//		 	resMap = _userB.BUSI_addUser(ctr_m,_u);
 
 	        return resMap;
 	 }
@@ -117,9 +127,8 @@ public class userController extends baseContoller {
 	  * API : modify user
 	  * 
 	  **/
-	 @RequestMapping(value={"/{userId}"}, method = RequestMethod.PUT)
-	 @ResponseBody
-	 public Map modifyUserPut(HttpServletRequest req){
+	 @PutMapping("/{userId}")	 
+	 public Map modifyUserPut(HttpServletRequest req) {
 		 	
 		 	//init
 		 	Map resMap = new HashMap();
@@ -140,9 +149,8 @@ public class userController extends baseContoller {
 	  * API : modify user
 	  * 
 	  **/
-	 @RequestMapping(value={"/{userId}"}, method = RequestMethod.PATCH)
-	 @ResponseBody
-	 public Map modifyUserPatch(HttpServletRequest req){
+	 @PatchMapping("/{userId}")
+	 public Map modifyUserPatch(HttpServletRequest req) {
 		 	
 		 	//init
 		 	Map resMap = new HashMap();
@@ -153,7 +161,7 @@ public class userController extends baseContoller {
 			String _jStr = req.getParameter("reqStr");
 			Map ctr_m = gs.fromJson(_jStr, Map.class);
 		 	
-		 	resMap = _userB.BUSI_modifyUser(ctr_m,_u);
+			resMap = _userB.BUSI_modifyUser(ctr_m,_u);
 
 	        return resMap;
 	 }
@@ -163,9 +171,8 @@ public class userController extends baseContoller {
 	  * API : delete user
 	  * 
 	  **/
-	 @RequestMapping(value={"/{userId}"}, method = RequestMethod.DELETE)
-	 @ResponseBody
-	 public Map deleteUser(HttpServletRequest req,Integer userId) {
+	 @DeleteMapping("/{userId}")
+	 public Map deleteUser(HttpServletRequest req) {
 		
 		 	//init
 		 	Map resMap = new HashMap();
@@ -175,8 +182,8 @@ public class userController extends baseContoller {
 		 	UserInfo _u = getuserInfo(req);
 		 	String _jStr = req.getParameter("reqStr");
 			Map ctr_m = gs.fromJson(_jStr, Map.class);
-			
-		 	resMap = _userB.BUSI_deleteUser(ctr_m,userId,_u);
+		
+		 	resMap = _userB.BUSI_deleteUser(ctr_m,_u);
 	        
 	        return resMap;
 	 }

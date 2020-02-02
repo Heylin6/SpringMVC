@@ -41,7 +41,7 @@ public class userService extends baseService{
 		}
 	}
 
-	public static Integer SEV_deleteUser(Integer userId) {
+	public static Integer SEV_deleteUser(Map sev_m) {
 		
 		try {
 			

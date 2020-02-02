@@ -47,7 +47,7 @@ public class userBusiness extends baseBusiness{
 		return resMap;
 	}
 	
-	public static Map BUSI_getUser(Map busi_m, UserInfo _u, Integer userId) {
+	public static Map BUSI_getUser(Map busi_m, UserInfo _u, Long userId) {
 		
 		Map resMap = new HashMap();
 		Map dataMap = new HashMap();
@@ -129,7 +129,7 @@ public class userBusiness extends baseBusiness{
 
 
 
-	public static Map BUSI_deleteUser(Map busi_m,Integer userId,UserInfo _u) {		
+	public static Map BUSI_deleteUser(Map busi_m,UserInfo _u) {		
 		
 		Integer res =0;
 		Map resMap = new HashMap();
@@ -141,7 +141,7 @@ public class userBusiness extends baseBusiness{
 	 	}
 	 	else {
 	 		
-	 		res = userS.SEV_deleteUser(userId);
+	 		res = userS.SEV_deleteUser(busi_m);
 	 		//寫入異動紀錄
 	 		//
 	 		

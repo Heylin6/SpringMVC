@@ -1,19 +1,29 @@
 package com.example.demo.Model;
 
+import javax.persistence.Id;
+
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class User implements java.io.Serializable { 
-	
-	private Integer userId;
+		
+	private long userId;
 	
 	private String userName;
 	
+	private String createTime;
+	
 	private String userStatus;
 	
+	public User(long userId, String userName, String userStatus) {
+		this.userId = userId;
+		this.userName = userName;
+		this.userStatus = userStatus;
+	}
 	
 	
-	public Integer getuserId() {
+	
+	public long getuserId() {
 		return userId;
 	}
 	
@@ -27,6 +37,14 @@ public class User implements java.io.Serializable {
 	
 	public void setuserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public String getcreateTime() {
+		return createTime;
+	}
+	
+	public void setcreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 	
 	public String getuserStatus() {
