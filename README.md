@@ -14,6 +14,9 @@ https://kknews.cc/zh-tw/code/q5a89v8.html
 解決辦法 : Loading class `com.mysql.jdbc.Driver'. This is deprecated
 https://www.itread01.com/content/1547431397.html
 
+解決辦法 : springboot集成Redis出现报错
+https://cloud.tencent.com/developer/article/1472627
+
 小記:
 先前碰到的是已完成的系統
 都在維護上做變化而已
