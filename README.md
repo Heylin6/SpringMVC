@@ -11,6 +11,9 @@ https://blog.csdn.net/jianyuerensheng/article/details/51352184
 
 https://kknews.cc/zh-tw/code/q5a89v8.html
 
+
+https://cpmaltose.wordpress.com/2017/08/05/log4j-fast-tutorial/
+
 解決辦法 : Loading class `com.mysql.jdbc.Driver'. This is deprecated
 https://www.itread01.com/content/1547431397.html
 
