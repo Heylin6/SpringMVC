@@ -44,3 +44,4 @@ SQL-MariaDB
 
 log4j
 https://cpmaltose.wordpress.com/2017/08/05/log4j-fast-tutorial/
+http://puremonkey2010.blogspot.com/2010/08/java-apache-log4j-log.html
