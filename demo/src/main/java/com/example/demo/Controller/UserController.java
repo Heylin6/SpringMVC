@@ -32,7 +32,7 @@ import com.google.gson.Gson;
 
 @RestController
 @RequestMapping("/User")
-public class userController extends baseContoller {
+public class UserController extends baseContoller {
 
 	Result result;	
 	
@@ -69,7 +69,7 @@ public class userController extends baseContoller {
 		 	Gson gs = new Gson();
 		 	
 		 	//確認後台使用者資訊
-		 	UserInfo _u  = getuserInfo(req);
+		 	UserInfo _u  = null;
 		 	String _jStr = req.getParameter("reqStr");
 		 	Map ctr_m    = gs.fromJson(_jStr, Map.class);
 		 	
@@ -91,7 +91,7 @@ public class userController extends baseContoller {
 		 	Gson gs = new Gson();
 		 	
 		 	//確認後台使用者資訊
-		 	UserInfo _u = getuserInfo(req);
+		 	UserInfo _u = null;
 			String _jStr = req.getParameter("reqStr");
 			Map ctr_m = gs.fromJson(_jStr, Map.class);
 			
@@ -135,7 +135,7 @@ public class userController extends baseContoller {
 		 	Gson gs = new Gson();
 		 	
 		 	//確認後台使用者資訊
-		 	UserInfo _u = getuserInfo(req);		 	
+		 	UserInfo _u  = null; 	
 			String jsonStr = req.getParameter("reqStr");
 			Map ctr_m = gs.fromJson(jsonStr, Map.class);
 		 	
@@ -157,7 +157,7 @@ public class userController extends baseContoller {
 		 	Gson gs = new Gson();
 		 	
 		 	//確認後台使用者資訊
-		 	UserInfo _u = getuserInfo(req);		 	
+		 	UserInfo _u  = null;
 			String _jStr = req.getParameter("reqStr");
 			Map ctr_m = gs.fromJson(_jStr, Map.class);
 		 	
@@ -179,7 +179,7 @@ public class userController extends baseContoller {
 		 	Gson gs = new Gson();
 		 	
 		 	//確認後台使用者資訊
-		 	UserInfo _u = getuserInfo(req);
+		 	UserInfo _u  = null;
 		 	String _jStr = req.getParameter("reqStr");
 			Map ctr_m = gs.fromJson(_jStr, Map.class);
 		

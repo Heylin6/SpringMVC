@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,15 @@ import com.google.gson.Gson;
 /**
  * 	寫法 : 請求 用 RequestParam , JPA , Repository
  * 	然後 JWT 做驗證
- *         註:還沒寫完 還差 JWT驗證
+ *       註:還沒寫完 還差 JWT驗證
+ *       
+ *  produces={"application/json;charset=UTF-8"}
+ *  可以設定返回的response的媒體類型和文字的編碼,ex:返回為JSON格式,字元編碼為UTF-8
+ *         
+ *  consumes = MediaType.APPLICATION_JSON_VALUE       
+ *   指定處理請求的類型（Content-Type），ex:application/json
+ *   
+ *   @PathVariable : 指定請求參數中要含有某一項參數
  */
 
 @RestController
@@ -80,7 +89,7 @@ public class OrderController extends baseContoller {
 	  * API : Search orderlist
 	  * 
 	  **/
-	 @RequestMapping(value={"/"}, method = RequestMethod.GET)
+	 @RequestMapping(value={"/"},produces={"application/json;charset=UTF-8"}, method = RequestMethod.GET)
 	 @ResponseBody
 	 public List<Order> getUserList() {
 		 	
@@ -92,7 +101,7 @@ public class OrderController extends baseContoller {
 	  * API : Search one order
 	  * 
 	  **/
-	 @RequestMapping(value={"/{orderId}"}, method = RequestMethod.GET)
+	 @RequestMapping(value={"/{orderId}"},produces={"application/json;charset=UTF-8"}, method = RequestMethod.GET)
 	 @ResponseBody
 	 public Optional<Order> getUser(@PathVariable long orderId) {
 		 	
@@ -104,7 +113,7 @@ public class OrderController extends baseContoller {
 	  * API : insert order
 	  * 
 	  **/
-	 @RequestMapping(value={"/"}, method = RequestMethod.POST)
+	 @RequestMapping(value={"/"}, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	 @ResponseBody
 	 public void addUser(@RequestBody Order order){
 		 	
@@ -116,7 +125,7 @@ public class OrderController extends baseContoller {
 	  * API : modify order
 	  * 
 	  **/
-	 @RequestMapping(value={"/{orderId}"}, method = RequestMethod.PUT)
+	 @RequestMapping(value={"/{orderId}"}, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PUT)
 	 @ResponseBody
 	 public void modifyUserPut(@RequestBody Order order){
 		 
@@ -128,7 +137,7 @@ public class OrderController extends baseContoller {
 	  * API : modify order
 	  * 
 	  **/
-	 @RequestMapping(value={"/{orderId}"}, method = RequestMethod.PATCH)
+	 @RequestMapping(value={"/{orderId}"}, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PATCH)
 	 @ResponseBody
 	 public void modifyUserPatch(@RequestBody Order order){		 	
 		 
@@ -140,7 +149,7 @@ public class OrderController extends baseContoller {
 	  * API : delete order
 	  * 
 	  **/
-	 @RequestMapping(value={"/{orderId}"}, method = RequestMethod.DELETE)
+	 @RequestMapping(value={"/{orderId}"}, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.DELETE)
 	 @ResponseBody
 	 public void deleteUser(@PathVariable long orderId) {
 		

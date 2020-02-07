@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 
 
 public class User implements java.io.Serializable { 
-		
+	
+	@Id	
 	private long userId;
 	
 	private String userName;
