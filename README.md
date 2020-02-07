@@ -21,6 +21,9 @@ https://cloud.tencent.com/developer/article/1472627
 https://www.twblogs.net/a/5c226293bd9eee16b3db0037
 (Model記得要implements Serializable)
 
+解決辦法 :[WARNING] The requested profile "pom.xml" could not be activated because it does not exist导致无法打包
+https://blog.csdn.net/H_O_W_E/article/details/88201885
+
 小記:
 先前碰到的是已完成的系統
 都在維護上做變化而已
