@@ -1,12 +1,16 @@
 package com.example.demo.Dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.Model.Member;
 import com.example.demo.Utilitylib.Directionarylib;
 
+@Repository
 public class MemberDao {
 
+	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
 	public void addMember(Member member) {	

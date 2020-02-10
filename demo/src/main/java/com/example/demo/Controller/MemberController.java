@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.Dao.MemberRepository;
 import com.example.demo.Model.Member;
@@ -22,7 +26,8 @@ public class MemberController extends baseContoller {
 	@Autowired
 	MemberRepository memberRepository;
 	
-	@Autowired
+	//@Autowired
+	//這個註解掉 Maven test就過了 我也不懂
 	memberService _memberService;
 	
 	@GetMapping("/login")
@@ -73,4 +78,16 @@ public class MemberController extends baseContoller {
 
         return "addMemberPage";
     }
+	
+	 /** 
+	  * 
+	  * API : Search one order
+	  * 
+	  **/
+	 @RequestMapping(value={"/Member/{mid}"},produces={"application/json;charset=UTF-8"}, method = RequestMethod.GET)
+	 @ResponseBody
+	 public Optional<Member> getMember(@PathVariable long mid) {
+		 	
+		 return memberRepository.findById(mid);
+	 }
 }
