@@ -40,14 +40,20 @@ https://stackoverflow.com/questions/26095881/no-found-for-dependency-expected-at
 
 https://blog.csdn.net/tgvincent/article/details/81296349
 
+==============================
+
 小記:
+
 先前碰到的是已完成的系統
+
 都在維護上做變化而已
+
 所以這次自己建構一個練習
 
 ORM - 
 
 user採用
+
 order採用JPA(Java Persistence API)
 
 其他:
