@@ -24,6 +24,11 @@ https://www.twblogs.net/a/5c226293bd9eee16b3db0037
 解決辦法 :[WARNING] The requested profile "pom.xml" could not be activated because it does not exist导致无法打包
 https://blog.csdn.net/H_O_W_E/article/details/88201885
 
+解決辦法 :MockMvc.perform() 一直回傳 NullPointException
+https://stackoverflow.com/questions/45758429/getting-java-lang-nullpointerexception-for-mvc-perform
+https://stackoverflow.com/questions/26095881/no-found-for-dependency-expected-at-least-1-bean-which-qualifies-as-autowire-ca
+
+
 小記:
 先前碰到的是已完成的系統
 都在維護上做變化而已
