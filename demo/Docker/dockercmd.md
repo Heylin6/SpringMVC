@@ -6,6 +6,10 @@ docker build -f Dockerfile
 
 docker build -f Dockerfile .
 
+[運行container 用8080 PORT]
+
+docker run -p 8080:8080 [container]
+
 [查看image列表]
 
 docker image ls
