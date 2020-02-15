@@ -111,13 +111,7 @@ public class UserController extends baseContoller {
 		 	//init
 		 	Map resMap = new HashMap();
 		 	Gson gs = new Gson();
-		 	
-		 	//確認後台使用者資訊
-//		 	UserInfo _u = getuserInfo(req);		 	
-//			String _jStr = req.getParameter("reqStr");
-//			Map ctr_m = gs.fromJson(_jStr, Map.class);
-//		 	
-//		 	resMap = _userB.BUSI_addUser(ctr_m,_u);
+
 
 	        return resMap;
 	 }

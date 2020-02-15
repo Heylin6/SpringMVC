@@ -9,13 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>Heylin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<docker.image.prefix>heylinspringboot</docker.image.prefix>
 	</properties>
 
 	<dependencies>	
@@ -109,6 +110,26 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Docker maven plugin -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<!-- 注意imageName一定要是符合正則[a-z0-9-_.]的，否則構建不會成功 -->
+					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<dockerDirectory>src/main</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+					
+				</configuration>
+			</plugin>
+			<!-- Docker maven plugin -->
 		</plugins>
 	</build>
 

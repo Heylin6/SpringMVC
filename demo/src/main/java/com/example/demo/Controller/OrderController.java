@@ -73,14 +73,7 @@ public class OrderController extends baseContoller {
 	  **/
 	 @RequestMapping(value={"/testforPage"})
 	 public String testforPage() {
-		 
-		 Result _result = new Result();
-		 Map _user = null;
-		 
-		 _result.setdata(_user);
-		 _result.setcode(200);
-		 _result.setmsg("ok");
-		 
+		 		 
 	     return "testforPage";
 	 }
 	 
