@@ -40,6 +40,10 @@ https://stackoverflow.com/questions/26095881/no-found-for-dependency-expected-at
 
 https://blog.csdn.net/hss0123456789/article/details/85925721
 
+解決辦法 :There is no PasswordEncoder mapped for the id "null"
+
+https://mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
+
 單元測試 Assert相關
 
 https://blog.csdn.net/tgvincent/article/details/81296349
@@ -97,5 +101,7 @@ https://openhome.cc/Gossip/CodeData/DockerLayman/DockerLayman1.html
 JWT
 
 -相關資訊
+
+https://www.youtube.com/watch?v=X80nJ5T7YpE
 
 https://openhome.cc/Gossip/Spring/SpringSecurity.html
