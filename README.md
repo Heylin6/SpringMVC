@@ -93,3 +93,9 @@ https://dotblogs.com.tw/grayyin/2019/04/01/153515
 https://www.itread01.com/content/1569204302.html
 
 https://openhome.cc/Gossip/CodeData/DockerLayman/DockerLayman1.html
+
+JWT
+
+-相關資訊
+
+https://openhome.cc/Gossip/Spring/SpringSecurity.html
