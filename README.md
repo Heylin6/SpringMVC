@@ -36,6 +36,10 @@ https://stackoverflow.com/questions/45758429/getting-java-lang-nullpointerexcept
 
 https://stackoverflow.com/questions/26095881/no-found-for-dependency-expected-at-least-1-bean-which-qualifies-as-autowire-ca
 
+解決辦法 :There is already 'xx' bean method
+
+https://blog.csdn.net/hss0123456789/article/details/85925721
+
 單元測試 Assert相關
 
 https://blog.csdn.net/tgvincent/article/details/81296349
