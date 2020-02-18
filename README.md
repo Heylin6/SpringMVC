@@ -44,6 +44,10 @@ https://blog.csdn.net/hss0123456789/article/details/85925721
 
 https://mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
 
+解決辦法 :新增不走Auth的API(jwt)
+
+https://openhome.cc/Gossip/Spring/LoginOutForm.html
+
 單元測試 Assert相關
 
 https://blog.csdn.net/tgvincent/article/details/81296349
