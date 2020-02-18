@@ -1,16 +1,25 @@
 package com.example.demo.Model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
+
+import com.sun.istack.NotNull;
 
 
 public class User implements java.io.Serializable { 
 	
-	@Id	
+	@Id
 	private long userId;
-	
+
 	private String userName;
+	
+    private String password;
 	
 	private String createTime;
 	

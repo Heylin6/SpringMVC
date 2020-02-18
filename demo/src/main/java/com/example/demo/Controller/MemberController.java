@@ -4,24 +4,55 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.Dao.MemberRepository;
+import com.example.demo.Model.AuthenticationResponse;
+import com.example.demo.Model.JwtUser;
 import com.example.demo.Model.Member;
+import com.example.demo.Service.JwtAuthenticationService;
+import com.example.demo.Service.jwtuserdetailsService;
 import com.example.demo.Service.memberService;
+import com.example.demo.Setting.JwtTokenConfig;
 
 @Controller
 public class MemberController extends baseContoller {
+	
+	@Value("${jwt.header}")
+    private String tokenHeader;
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+
+	
+	@Autowired
+	private JwtTokenConfig _JwtTokenConfig;
+	
+	@Autowired
+	private JwtAuthenticationService _JwtAuthenticationService;
+	
+	@Autowired
+    private UserDetailsService jwtuserdetailsService;
 	
 	@Autowired
 	MemberRepository memberRepository;
@@ -37,27 +68,25 @@ public class MemberController extends baseContoller {
     }
 	
 	@PostMapping("/doLogin")
-    public String doLogin(@ModelAttribute Member member,HttpSession session){
+    public String doLogin(@ModelAttribute Member member,HttpSession session)
+    throws Exception {
 		
-		String _account = member.getaccount();
-		String _password = member.getpassword();
+		String _UsName = member.getaccount();
+		String _Paword = member.getpassword();
 		
-		List<Member> _memberlist = new ArrayList<Member>();
-		_memberlist = memberRepository.findCheckMemberAccount(_account, _password);
-		
-		session.setAttribute("uid", member);
-		
-		Member _member = new  Member();
-		_member.setpassword(_password);
-		_member.setaccount(_account);
-
-		if(_memberlist.size()==0){
-			return "login";
+		if(_JwtAuthenticationService.hasThisuser(_UsName,_Paword))
+		{
+			_JwtAuthenticationService.authenticate(_UsName,_Paword);
+			
+			final UserDetails userDetails = jwtuserdetailsService
+					.loadUserByUsername(_UsName);
+			final String jwt = _JwtTokenConfig.generateToken(userDetails);
+			
+			return "welcome";
 		}
 		else{
-			session.setAttribute("uid", _member);
-			System.out.println(session.getId());
-	        return "welcome";
+			
+			return "login";	        
 		}
     }
 	

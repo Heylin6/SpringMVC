@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 import com.example.demo.Model.ChatClientModel;
-import com.example.demo.Model.ServerResponseModel;
+import com.example.demo.Model.WebSocketResponse;
 
 @Controller
 public class CharRoomController {
@@ -21,10 +21,10 @@ public class CharRoomController {
 	
 	@MessageMapping("/messageControl")
 	@SendTo("/topic/getResponse")
-		public ServerResponseModel said(ChatClientModel name) throws Exception{
+		public WebSocketResponse said(ChatClientModel name) throws Exception{
 			
 			Thread.sleep(1000);			
-			return new ServerResponseModel("read");
+			return new WebSocketResponse("read");
 			//return new ServerResponseModel("歡迎來到," + respMessage);
 	}
 }

@@ -16,7 +16,17 @@ public interface MemberRepository extends JpaRepository<Member, Long>{
 	List<Member> findAll();	
 	
 	@Query(value="select mid,account,password,createtime,modifytime"
-			+ ",createmid,modifymid,status"
+			+ ",createmid,modifymid,status,lastlogintime"
+			+ " from member where account = ?1" ,nativeQuery = true)
+	Member findByAccount(String account);
+	
+	@Query(value="select mid,account,password,createtime,modifytime"
+			+ ",createmid,modifymid,status,lastlogintime"
+			+ " from member where account = ?1 and password = ?2 " ,nativeQuery = true)
+	Member findByAccountWithPassword(String account,String password);
+	
+	@Query(value="select mid,account,password,createtime,modifytime"
+			+ ",createmid,modifymid,status,lastlogintime"
 			+ " from member where account = ?1 and password = ?2 " ,nativeQuery = true)
 	List<Member> findCheckMemberAccount(String account,String password);
 

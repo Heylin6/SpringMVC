@@ -4,20 +4,34 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import com.sun.istack.NotNull;
+
+import java.util.List;
 
 @Entity
 @Table(name = "member")
 public class Member implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "mid")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator = "user_seq")
+	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
 	private long mid;
 	
 	@Column(name="account")
+	@NotNull
+    @Size(min = 4, max = 50)
 	private String account;
 	
 	@Column(name="password")
@@ -37,6 +51,29 @@ public class Member implements Serializable {
 	
 	@Column(name="status")
 	private String status;
+	
+	@Column(name="lastlogintime")
+	private String lastlogintime;
+	
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "authority",
+//            joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "mid")},
+//            inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "aid")})
+//    private List<Authority> authorities;
+
+	public Member() {
+		
+	}
+	
+
+	public Member(String username, String password) {
+	
+		this.setaccount(username);
+		this.setpassword(password);
+	}
+
+	
 	
 	public long getmid() {
 		return mid;
@@ -98,7 +135,27 @@ public class Member implements Serializable {
 		return status;
 	}
 	
+	public boolean getstatusforbool() {
+		return status == "1" ? true:false;
+	}
+	
 	public void setstatus(String status) {
 		this.status = status;
 	}	
+
+//    public List<Authority> getAuthorities() {
+//        return authorities;
+//    }
+//
+//    public void setAuthorities(List authorities) {
+//        this.authorities = authorities;
+//    }
+    
+	public String getlastlogintime() {
+		return lastlogintime;
+	}
+	
+	public void setlastlogintime(String lastlogintime) {
+		this.lastlogintime = lastlogintime;
+	}
 }

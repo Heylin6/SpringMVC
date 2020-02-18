@@ -1,14 +1,14 @@
 package com.example.demo.Model;
 
-public class ServerResponseModel {
+public class WebSocketResponse {
 	
 	private String content;
 
-	public ServerResponseModel() {
+	public WebSocketResponse() {
 		
 	}
 	
-	public ServerResponseModel(String content) {
+	public WebSocketResponse(String content) {
 		this.content = content;
 	}
 
