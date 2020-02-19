@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//初始建置會先經過這邊		
 
 		httpSecurity.csrf().disable()
-		.authorizeRequests().antMatchers("/authenticate","/login","/Order/test").permitAll().
+		.authorizeRequests().antMatchers("/authenticate","/login","/Chat","/Order/test").permitAll().
 		anyRequest().authenticated()
 		.and().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

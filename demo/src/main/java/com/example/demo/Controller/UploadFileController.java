@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
 
-import com.example.demo.Business.uploadfileBusiness;
 import com.example.demo.Model.Result;
+import com.example.demo.Service.uploadfileService;
 
 
 @Controller
 @RequestMapping("/UploadFile")
 public class UploadFileController extends baseContoller {	
 	
-	private uploadfileBusiness _uploadfileB = new uploadfileBusiness();
+	private uploadfileService _uploadfileB = new uploadfileService();
 	
 	 @GetMapping("/")
 	 public String UploadFileIndex() {

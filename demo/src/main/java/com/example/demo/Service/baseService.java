@@ -1,22 +1,14 @@
 package com.example.demo.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class baseService {
 	
-	public String setWhere(List<Map<String,String>> _condition) {
+	protected List errMsgList = new ArrayList();		
+	protected static String UPLOADED_FOLDER = "D://Github//SpringMVC//demo//uploadfiles//";
 		
-		String res ="";
-		
-		if(_condition.size()>0)
-		{
-			res +=" where ";
-		}
-		
-		return null;
-	}
-	
 	public Map getPagination() {
 		// TODO Auto-generated method stub
 		return null;

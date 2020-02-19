@@ -1,4 +1,4 @@
-package com.example.demo.Business;
+package com.example.demo.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,11 +6,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.Utilitylib.*;
 
-public class uploadfileBusiness extends baseBusiness {
+@Service
+public class uploadfileService extends baseService {
 
 	public void saveUploadedFiles(List<MultipartFile> files) throws IOException {
 		

@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Business.userBusiness;
-import com.example.demo.Common.UserInfo;
 import com.example.demo.Model.Result;
 import com.example.demo.Model.User;
 import com.example.demo.Service.userService;
@@ -36,8 +34,6 @@ public class UserController extends baseContoller {
 
 	Result result;	
 	
-	private userBusiness _userB = new userBusiness();
-	
 	 /** 
 	  * 
 	  * API : test
@@ -47,7 +43,7 @@ public class UserController extends baseContoller {
 	 public Result test() {
 		 
 		 Result _result = new Result();
-		 Map _user = _userB.test_setuser();
+		 Map _user = null;
 		 
 		 _result.setdata(_user);
 		 _result.setcode(200);
@@ -68,12 +64,6 @@ public class UserController extends baseContoller {
 		 	Map resMap = new HashMap();
 		 	Gson gs = new Gson();
 		 	
-		 	//確認後台使用者資訊
-		 	UserInfo _u  = null;
-		 	String _jStr = req.getParameter("reqStr");
-		 	Map ctr_m    = gs.fromJson(_jStr, Map.class);
-		 	
-		 	resMap = _userB.BUSI_getUserList(ctr_m,_u);
 		 	
 			return resMap;
 	 }
@@ -90,12 +80,6 @@ public class UserController extends baseContoller {
 		 	Map resMap = new HashMap();
 		 	Gson gs = new Gson();
 		 	
-		 	//確認後台使用者資訊
-		 	UserInfo _u = null;
-			String _jStr = req.getParameter("reqStr");
-			Map ctr_m = gs.fromJson(_jStr, Map.class);
-			
-			resMap = _userB.BUSI_getUser(ctr_m,_u,userId);
 	        
 	        return resMap;
 	 }
@@ -128,12 +112,6 @@ public class UserController extends baseContoller {
 		 	Map resMap = new HashMap();
 		 	Gson gs = new Gson();
 		 	
-		 	//確認後台使用者資訊
-		 	UserInfo _u  = null; 	
-			String jsonStr = req.getParameter("reqStr");
-			Map ctr_m = gs.fromJson(jsonStr, Map.class);
-		 	
-		 	resMap = _userB.BUSI_modifyUser(ctr_m,_u);
 
 	        return resMap;
 	 }
@@ -149,14 +127,6 @@ public class UserController extends baseContoller {
 		 	//init
 		 	Map resMap = new HashMap();
 		 	Gson gs = new Gson();
-		 	
-		 	//確認後台使用者資訊
-		 	UserInfo _u  = null;
-			String _jStr = req.getParameter("reqStr");
-			Map ctr_m = gs.fromJson(_jStr, Map.class);
-		 	
-			resMap = _userB.BUSI_modifyUser(ctr_m,_u);
-
 	        return resMap;
 	 }
 	 
@@ -172,12 +142,6 @@ public class UserController extends baseContoller {
 		 	Map resMap = new HashMap();
 		 	Gson gs = new Gson();
 		 	
-		 	//確認後台使用者資訊
-		 	UserInfo _u  = null;
-		 	String _jStr = req.getParameter("reqStr");
-			Map ctr_m = gs.fromJson(_jStr, Map.class);
-		
-		 	resMap = _userB.BUSI_deleteUser(ctr_m,_u);
 	        
 	        return resMap;
 	 }
