@@ -1,0 +1,9 @@
+CREATE TABLE `authority` (
+	`aid` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`aid`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;
