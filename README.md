@@ -1,8 +1,27 @@
 # SpringMVC
+
 Backend Demo 
 
 lang:
+
 Java SpringBoot
+
+其他工具:
+
+WebSocket
+
+JWT
+
+JPA
+
+Radis
+
+MySQL
+
+Docker
+
+Maven Test
+
 
 參考:
 
@@ -11,6 +30,12 @@ https://ithelp.ithome.com.tw/users/20107812/ironman/1538
 https://blog.csdn.net/jianyuerensheng/article/details/51352184
 
 https://kknews.cc/zh-tw/code/q5a89v8.html
+
+==============================
+
+以下為採坑過程
+
+==============================
 
 解決辦法 : Loading class `com.mysql.jdbc.Driver'. This is deprecated
 
@@ -48,33 +73,20 @@ https://mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mappe
 
 https://openhome.cc/Gossip/Spring/LoginOutForm.html
 
+==============================
+
+其他:
+
+
 單元測試 Assert相關
 
 https://blog.csdn.net/tgvincent/article/details/81296349
-
-==============================
-
-小記:
-
-先前碰到的是已完成的系統
-
-都在維護上做變化而已
-
-所以這次自己建構一個練習
-
-ORM - 採用JPA(Java Persistence API)
-
-其他:
 
 gson
 
 https://rx1226.pixnet.net/blog/post/300642542
 
 websocket
-
-
-
-SQL-nosql
 
 SQL-MariaDB
 
@@ -109,3 +121,14 @@ JWT
 https://www.youtube.com/watch?v=X80nJ5T7YpE
 
 https://openhome.cc/Gossip/Spring/SpringSecurity.html
+
+==============================
+
+小記:
+
+先前碰到的是已完成的系統
+
+都在維護上做變化而已
+
+所以這次自己建構一個練習
+
