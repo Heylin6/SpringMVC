@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body>	
 	  <form class="login" role="form" id="loginForm" method="post" enctype="multipart/form-data" th:action="@{/doLogin}" th:object="${member}">
         <div class="banner"></div>
         <div class="form">
@@ -44,8 +44,9 @@
           </div>    
         </div>
       </form>
+      <p th:if="${loginError}" class="error">Wrong user or password</p>
       <!-- jQuery -->
-      <script th:src="@{/vendor/jquery/jquery.min.js}" src="../vendor/jquery/jquery.min.js"></script>
+      <script th:src="@{/vendor/jquery/jquery.min.js}" src="../vendor/jquery/jquery.min.js" type="text/javascript"></script>
 </body>
 <script type="text/javascript">
 $(function(){

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,10 +67,20 @@ public class MemberController extends baseContoller {
     public String login(@ModelAttribute Member member){
 
         return "login";
-    }
+    }	
 	
+	/*
+	 * => 登入 
+	 * 
+	 * HttpServletResponse 放進 jwt
+	 * session 存進 radis
+	 * 
+	 * */
 	@PostMapping("/doLogin")
-    public String doLogin(@ModelAttribute Member member,HttpSession session)
+    public String doLogin(@ModelAttribute Member member,
+    						HttpServletResponse res,
+    						HttpSession session,
+    						Model model)
     throws Exception {
 		
 		String _UsName = member.getaccount();
@@ -82,10 +94,15 @@ public class MemberController extends baseContoller {
 					.loadUserByUsername(_UsName);
 			final String jwt = _JwtTokenConfig.generateToken(userDetails);
 			
+			res.setHeader("Authorization", jwt);
+			
+			model.addAttribute("test_yourToken", jwt);
+			
 			return "welcome";
 		}
 		else{
 			
+			model.addAttribute("loginError", true);
 			return "login";	        
 		}
     }
@@ -100,6 +117,7 @@ public class MemberController extends baseContoller {
         return "login";
     }
 	
+	//@PreAuthorize("hasRole('USER')")
 	@GetMapping("/addMemberPage")
     public String addMemberPage(){
 //    	memberAccount = new MemberAccount();

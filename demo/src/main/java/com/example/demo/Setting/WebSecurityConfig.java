@@ -7,16 +7,19 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import com.example.demo.Service.jwtuserdetailsService;
 
@@ -48,36 +51,75 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 	
+    /**
+     *_ 靜態資源訪問設定
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+	       .ignoring().antMatchers("/vendor/**")
+	       .and()
+           .ignoring().antMatchers("/css/**")
+           .and()
+           .ignoring().antMatchers("/js/**")
+           .and()
+           .ignoring().antMatchers("/images/**")
+           .and()
+           .ignoring().antMatchers("/favicon.ico");
+    }
+	
+//	@Override
+//	protected void configure(HttpSecurity httpSecurity) throws Exception {
+//				
+//		//初始建置會先經過這邊		
+//
+//		httpSecurity
+//		.authorizeRequests()
+//		.antMatchers("/authenticate","/login","/doLogin","/logout","/login-error","/Chat","/Order/test")
+//				.permitAll().anyRequest().authenticated()
+////		.and().formLogin().loginPage("/login").failureUrl("/login-error")
+////        .and().logout().logoutSuccessUrl("/index")
+//        .and().csrf().disable().sessionManagement()
+//		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//		
+//		httpSecurity
+//		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+//	}
+	
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-				
-		//初始建置會先經過這邊		
-
-		httpSecurity.csrf().disable()
-		.authorizeRequests().antMatchers("/authenticate","/login","/Chat","/Order/test").permitAll().
-		anyRequest().authenticated()
-		.and().sessionManagement()
-		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
-		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+		httpSecurity
+		.authorizeRequests()
+		//允許所有使用者訪問以下
+		.antMatchers("/authenticate","/login","/doLogin","/logout","/login-error","/Chat","/Order/test")
+		.permitAll()
+		//其他請求需登入才可訪問。     
+        .anyRequest().authenticated()    
+        .and()
+        .csrf().disable().sessionManagement() // 停用防跨域攻擊(測試階段停用，不推薦)
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
+		httpSecurity
+		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
-	
+//	
 //	@Override
 //	protected void configure(AuthenticationManagerBuilder auth) throws Exception {	
 //		
 //		  auth.userDetailsService(jwtUserDetailsService);
 //	}
 //	
+	
+//	public PasswordEncoder passwordEncoder() {
+//		
+//		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//	}
+//	
+
+	@SuppressWarnings("deprecation")
 	public PasswordEncoder passwordEncoder() {
 		
 		return NoOpPasswordEncoder.getInstance();
 	}
-	
-//	@Bean
-//	public PasswordEncoder passwordEncoder() {
-//	
-//		return new BCryptPasswordEncoder();
-//	}
-	
-
 }
