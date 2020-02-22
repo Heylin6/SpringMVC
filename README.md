@@ -116,6 +116,8 @@ https://dotblogs.com.tw/grayyin/2019/04/01/153515
 
 -其他
 
+https://github.com/Java-Archive/nano-vaadin-undertow-v08/blob/master/docker_run_locale.sh
+
 https://www.itread01.com/content/1569204302.html
 
 https://openhome.cc/Gossip/CodeData/DockerLayman/DockerLayman1.html
@@ -133,6 +135,8 @@ https://programming.vip/docs/5da0af37bb08b.html
 https://openhome.cc/Gossip/Spring/JWT.html
 
 https://www.jishuwen.com/d/plXk/zh-tw
+
+https://tpu.thinkpower.com.tw/tpu/articleDetails/1606
 
 ==============================
 
