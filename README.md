@@ -73,6 +73,12 @@ https://mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mappe
 
 https://openhome.cc/Gossip/Spring/LoginOutForm.html
 
+https://www.itread01.com/content/1535011089.html
+
+https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/547084/
+
+https://openhome.cc/Gossip/Spring/BootSecurity.html
+
 ==============================
 
 其他:
@@ -110,6 +116,8 @@ https://dotblogs.com.tw/grayyin/2019/04/01/153515
 
 -其他
 
+https://github.com/Java-Archive/nano-vaadin-undertow-v08/blob/master/docker_run_locale.sh
+
 https://www.itread01.com/content/1569204302.html
 
 https://openhome.cc/Gossip/CodeData/DockerLayman/DockerLayman1.html
@@ -121,6 +129,14 @@ JWT
 https://www.youtube.com/watch?v=X80nJ5T7YpE
 
 https://openhome.cc/Gossip/Spring/SpringSecurity.html
+
+https://programming.vip/docs/5da0af37bb08b.html
+
+https://openhome.cc/Gossip/Spring/JWT.html
+
+https://www.jishuwen.com/d/plXk/zh-tw
+
+https://tpu.thinkpower.com.tw/tpu/articleDetails/1606
 
 ==============================
 
