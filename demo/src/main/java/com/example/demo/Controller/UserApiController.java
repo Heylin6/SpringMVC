@@ -32,15 +32,15 @@ import com.google.gson.Gson;
  * 	寫法 : 請求 HttpServletRequest 轉成json解析
  */
 
+@RestController
 @Controller
-@RequestMapping("/User")
-public class UserController extends baseContoller {
-
-	Result result;	
+@RequestMapping("/UserApi")
+public class UserApiController extends baseContoller {
 	
 	@Autowired
 	UserRepository userRepository;
 	
+	private userService userS;
 	 /** 
 	  * 
 	  * API : test
@@ -49,14 +49,7 @@ public class UserController extends baseContoller {
 	 @GetMapping("/test")	
 	 public Result test() {
 		 
-		 Result _result = new Result();
-		 Map _user = null;
-		 
-		 _result.setdata(_user);
-		 _result.setcode(200);
-		 _result.setmsg("ok");
-		 
-	     return _result;
+		 return setTestResult();
 	 }
 	 
 	 /** 
@@ -64,18 +57,24 @@ public class UserController extends baseContoller {
 	  * API : Search userlist
 	  * 
 	  **/
-	 @GetMapping("/")
-	 public Result getAllUserList(HttpServletRequest req) {
-		 	
-		 	//init
-		 	Result _result = new Result();
-		 	List<User> _user = userRepository.findAll();		 	
-		 
-			_result.setdata(_user);
-			_result.setcode(200);
-			_result.setmsg("ok");		 	
-		 	
-			return _result;
+	 @RequestMapping(value={"/","/all"},
+			 produces={"application/json;charset=UTF-8"}, 
+			 method = RequestMethod.GET)
+	 @ResponseBody
+	 public Result getAllUserList() {		
+	
+		Result res = null;
+		List<User> _userL = userS.getAllUserList();
+		if(_userL != null)
+		{
+			res = userS.setResultList(_userL,200,"ok");
+			return res;
+		}
+		else
+		{
+			res = userS.setResultList(null,99,"no data");
+			return res;
+		}
 	 }
 	 
 	 /** 

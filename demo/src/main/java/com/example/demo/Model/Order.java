@@ -1,13 +1,17 @@
 package com.example.demo.Model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Order {
+@Table(name = "\"order\"")
+public class Order implements Serializable {
 
 	public Order() {
 		
@@ -25,11 +29,43 @@ public class Order {
 	@Column(name="createtime")
 	private String createTime;
 	
-	@Column(name="status")
+	@Column(name="\"status\"")
 	private String status;	
 	
 	@Column(name="memo")
 	private String memo;
+	
+	public long getOrderId() {
+		return OrderId;
+	}
+	
+	public void setCOrderId(long OrderId) {
+		this.OrderId = OrderId;
+	}
+	
+	public String getCreateUser() {
+		return createTime;
+	}
+	
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
+	}
+	
+	public String getCreateTime() {
+		return createTime;
+	}
+	
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+	
+	public void setStatus(String status) {
+		this.status = status;
+	}
 		
 	public String getMemo() {
 		return memo;

@@ -13,6 +13,9 @@ import com.example.demo.Model.Member;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long>{
 	
+	@Query(value="select mid,account,password,createtime,modifytime"
+			+ ",createmid,modifymid,status,lastlogintime"
+			+ " from member" ,nativeQuery = true)
 	List<Member> findAll();	
 	
 	@Query(value="select mid,account,password,createtime,modifytime"

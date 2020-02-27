@@ -3,6 +3,7 @@ package com.example.demo.Service;
 import java.util.List;
 import java.util.Map;
 
+import com.example.demo.Model.User;
 import com.example.demo.Pagination.userPagination;
 
 public class userService extends baseService{	
@@ -92,5 +93,10 @@ public class userService extends baseService{
 			
 			return null;
 		}
+	}
+
+	public List<User> getAllUserList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

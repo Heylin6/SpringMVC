@@ -55,11 +55,11 @@ public class OrderApiController extends baseContoller {
 	 }
 	 
 	 
-	 @RequestMapping(value={"/"},
+	 @RequestMapping(value={"/","/all"},
 			 produces={"application/json;charset=UTF-8"}, 
 			 method = RequestMethod.GET)
 	 @ResponseBody
-	 public Result getOrderList() {
+	 public Result getAllOrderList() {
 
 		 Result res = null;
 		 List<Order> _orderL = orderS.getAllOrderList();
@@ -72,8 +72,7 @@ public class OrderApiController extends baseContoller {
 		 {
 			 res = orderS.setResultList(null,99,"no data");
 			 return res;
-		 }
-		  
+		 }		  
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"},

@@ -72,19 +72,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		
-		httpSecurity
-		.authorizeRequests()
-		//允許所有使用者訪問以下
-		.antMatchers("/authenticate","/login","/doLogin","/logout","/login-error","/Chat","/Order/test")
-		.permitAll()
-		//其他請求需登入才可訪問。     
-        .anyRequest().authenticated()    
-        .and()
-        .csrf().disable().sessionManagement() // 停用防跨域攻擊(測試階段停用，不推薦)
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
-		httpSecurity
-		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+//		httpSecurity
+//		.authorizeRequests()
+//		//允許所有使用者訪問以下
+//		.antMatchers("/authenticate","/login","/doLogin","/logout","/login-error","/Chat","/Order/test")
+//		.permitAll()
+//		//其他請求需登入才可訪問。     
+//        .anyRequest().authenticated()    
+//        .and()
+//        .csrf().disable().sessionManagement() // 停用防跨域攻擊(測試階段停用，不推薦)
+//        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//		
+//		httpSecurity
+//		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 	
 //	public PasswordEncoder passwordEncoder() {

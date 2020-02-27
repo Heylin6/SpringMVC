@@ -1,8 +1,11 @@
 package com.example.demo.Dao;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.demo.Model.User;
 import com.example.demo.Utilitylib.Directionarylib;
 
+@Repository
 public class UserDao extends baseDao{
 	
 	public void addUser(User user) {	

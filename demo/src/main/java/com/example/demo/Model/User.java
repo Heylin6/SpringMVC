@@ -1,17 +1,20 @@
 package com.example.demo.Model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
 import com.sun.istack.NotNull;
 
-
+@Entity
+@Table(name = "user")
 public class User implements java.io.Serializable { 
 	
 	public User() {

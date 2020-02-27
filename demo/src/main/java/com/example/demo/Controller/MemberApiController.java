@@ -32,7 +32,7 @@ public class MemberApiController extends baseContoller {
 	 }
 	 
 	 @PostMapping("/MemberApi/editMember")
-	 public Result addMemberPage(Member member){
+	 public Result<?> addMemberPage(Member member){
 
 		 Result _result = new Result();
 
