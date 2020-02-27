@@ -51,7 +51,7 @@ public class OrderApiController extends baseContoller {
 	 @RequestMapping(value={"/test"})
 	 public Result test() {
 		 
-	     return setTestFeedback();
+	     return setTestResult();
 	 }
 	 
 	 
@@ -59,54 +59,93 @@ public class OrderApiController extends baseContoller {
 			 produces={"application/json;charset=UTF-8"}, 
 			 method = RequestMethod.GET)
 	 @ResponseBody
-	 public List<Order> getOrderList() {
-		 	
-		 return orderS.getAllOrderList();		 
+	 public Result getOrderList() {
+
+		 Result res = null;
+		 List<Order> _orderL = orderS.getAllOrderList();
+		 if(_orderL != null)
+		 {
+			 res = orderS.setResultList(_orderL,200,"ok");
+			 return res;
+		 }
+		 else
+		 {
+			 res = orderS.setResultList(null,99,"no data");
+			 return res;
+		 }
+		  
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"},
 			 produces={"application/json;charset=UTF-8"}, 
 			 method = RequestMethod.GET)
 	 @ResponseBody
-	 public Optional<Order> getOrder(@PathVariable long orderId) {
+	 public Result getOrder(@PathVariable long orderId) {
 		 
-		 return orderS.getOrder(orderId);
+		 Result res = null;
+		 Optional<Order> _order = orderS.getOrder(orderId);
+		 if(_order != null)
+		 {
+			 res = orderS.setResult(_order,200,"ok");
+			 return res;
+		 }
+		 else
+		 {
+			 res = orderS.setResult(null,99,"no data");
+			 return res;
+		 }		 
 	 }
 	 
 	 @RequestMapping(value={"/"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.POST)
 	 @ResponseBody
-	 public void addOrder(@RequestBody Order order){
+	 public Result addOrder(@RequestBody Order order){
 		 	
-		 orderS.save(order);		 
+		 Result res = null;
+		 orderS.save(order);
+		 
+		 res = orderS.setResult(null,200,"has save");
+		 return res;
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.PUT)
 	 @ResponseBody
-	 public void modifyOrderPut(@RequestBody Order order){		 
-		 	 
-		 orderS.modify(order);		 
+	 public Result modifyOrderPut(@RequestBody Order order){		 
+		 
+		 Result res = null;
+		 orderS.modify(order);	
+		 
+		 res = orderS.setResult(null,200,"has modify");
+		 return res;
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.PATCH)
 	 @ResponseBody
-	 public void modifyOrderPatch(@RequestBody Order order){		 	
+	 public Result modifyOrderPatch(@RequestBody Order order){		 	
 		 
+		 Result res = null;
 		 orderS.modify(order);		 
+		 
+		 res = orderS.setResult(null,200,"has modify");
+		 return res;
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.DELETE)
 	 @ResponseBody
-	 public void deleteOrder(@PathVariable long orderId) {
-		
+	 public Result deleteOrder(@PathVariable long orderId) {
+		 
+		 Result res = null;
 		 orderS.delete(orderId);		 
+		 
+		 res = orderS.setResult(null,200,"delete ok");
+		 return res;
 	 }
 	 
 }

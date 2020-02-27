@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Dao.OrderRepository;
 import com.example.demo.Model.Order;
+import com.example.demo.Model.Result;
 
 @Service
 public class orderService extends baseService { 
@@ -45,4 +46,6 @@ public class orderService extends baseService {
 		
 		orderRepository.deleteById(orderId);		
 	}
+
+
 }

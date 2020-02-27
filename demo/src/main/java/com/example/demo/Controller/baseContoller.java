@@ -10,7 +10,7 @@ import com.example.demo.Model.Result;
 
 public abstract class baseContoller {
 
-	public Result setTestFeedback() {
+	public Result setTestResult() {
 		
 		Result _result = new Result();
 		Map _user = null;

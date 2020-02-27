@@ -55,56 +55,64 @@ public class OrderController extends baseContoller {
 			 produces={"application/json;charset=UTF-8"}, 
 			 method = RequestMethod.GET)
 	 @ResponseBody
-	 public List<Order> getOrderList() {
+	 public String getOrderList(Model model) {
 		 	
-		 return orderS.getAllOrderList();		 
+		 List<Order> res =  orderS.getAllOrderList();
+		 model.addAttribute("OrderList",res);
+		 
+		 return "OrderList";
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"},
 			 produces={"application/json;charset=UTF-8"}, 
 			 method = RequestMethod.GET)
 	 @ResponseBody
-	 public Optional<Order> getOrder(@PathVariable long orderId) {
+	 public String getOrder(@PathVariable long orderId,Model model) {
 		 
-		 return orderS.getOrder(orderId);
+		 Optional<Order> res = orderS.getOrder(orderId);
+		 model.addAttribute("Order",res);
+		 
+		 return "OrderDetail";
 	 }
 	 
 	 @RequestMapping(value={"/"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.POST)
 	 @ResponseBody
-	 public void addOrder(@RequestBody Order order){
+	 public String addOrder(@RequestBody Order order){
 		 	
 		 orderS.save(order);
-		 
+		 return "OrderList";
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.PUT)
 	 @ResponseBody
-	 public void modifyOrderPut(@RequestBody Order order){
+	 public String modifyOrderPut(@RequestBody Order order){
 		 
-		 	 
+		 orderS.modify(order);
+		 return "OrderList";
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.PATCH)
 	 @ResponseBody
-	 public void modifyOrderPatch(@RequestBody Order order){		 	
+	 public String modifyOrderPatch(@RequestBody Order order){		 	
 		 
-		 orderS.modify(order);		 
+		 orderS.modify(order);
+		 return "OrderList";
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.DELETE)
 	 @ResponseBody
-	 public void deleteOrder(@PathVariable long orderId) {
+	 public String deleteOrder(@PathVariable long orderId) {
 		
 		 orderS.delete(orderId);
-		 
+		 return "OrderList";
 	 }
 	 
 }
