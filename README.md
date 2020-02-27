@@ -79,6 +79,12 @@ https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/547084/
 
 https://openhome.cc/Gossip/Spring/BootSecurity.html
 
+解決辦法 :JPA中資料表遇到保留字
+
+https://blog.csdn.net/qq_19671173/article/details/76782618
+
+https://www.webteach.tw/?p=268
+
 ==============================
 
 其他:
