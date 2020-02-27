@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -45,7 +46,6 @@ public class MemberController extends baseContoller {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-
 	
 	@Autowired
 	private JwtTokenConfig _JwtTokenConfig;
@@ -117,24 +117,25 @@ public class MemberController extends baseContoller {
         return "login";
     }
 	
-	//@PreAuthorize("hasRole('USER')")
-	@GetMapping("/addMemberPage")
-    public String addMemberPage(){
-//    	memberAccount = new MemberAccount();
-//    	memberService.addMember(memberAccount);
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/MemberPage")
+    public String MemberPage(){
 
-        return "addMemberPage";
+        return "MemberPage";
     }
 	
-	 /** 
-	  * 
-	  * API : Search one order
-	  * 
-	  **/
-	 @RequestMapping(value={"/Member/{mid}"},produces={"application/json;charset=UTF-8"}, method = RequestMethod.GET)
-	 @ResponseBody
-	 public Optional<Member> getMember(@PathVariable long mid) {
-		 	
-		 return memberRepository.findById(mid);
-	 }
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/MemberPage/{mid}")
+    public String MemberDetail(){
+
+        return "MemberDetail";
+    }
+	
+	@PreAuthorize("hasRole('USER')")
+	@PostMapping("/editMember")
+    public String addMember(@RequestBody Member member){
+		
+		memberRepository.save(member);
+        return "MemberPage";
+    }
 }

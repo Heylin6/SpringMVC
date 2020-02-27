@@ -21,7 +21,4 @@ public class baseService {
 	public Map getPagination(List<Map<String,String>> _condition,int _page) {		
 		return null;
 	}
-
-
-
 }

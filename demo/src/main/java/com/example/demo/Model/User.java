@@ -14,24 +14,37 @@ import com.sun.istack.NotNull;
 
 public class User implements java.io.Serializable { 
 	
+	public User() {
+		
+	}
+	
 	@Id
+	@Column(name = "userid")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator = "user_seq")
 	private long userId;
-
+	
+	@Column(name="username")
+	@NotNull
+    @Size(min = 4, max = 20)
 	private String userName;
 	
+	@Column(name="password")
+	@NotNull
+	@Size(min = 6, max = 300)
     private String password;
 	
+	@Column(name="createtime")
 	private String createTime;
 	
+	@Column(name="status")
 	private String userStatus;
 	
 	public User(long userId, String userName, String userStatus) {
+		
 		this.userId = userId;
 		this.userName = userName;
 		this.userStatus = userStatus;
 	}
-	
-	
 	
 	public long getuserId() {
 		return userId;
@@ -47,6 +60,14 @@ public class User implements java.io.Serializable {
 	
 	public void setuserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public String getpassword() {
+		return password;
+	}
+	
+	public void setpassword(String password) {
+		this.password = password;
 	}
 	
 	public String getcreateTime() {

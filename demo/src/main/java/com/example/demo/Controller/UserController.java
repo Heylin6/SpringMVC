@@ -1,7 +1,9 @@
 package com.example.demo.Controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Dao.UserRepository;
 import com.example.demo.Model.Result;
 import com.example.demo.Model.User;
 import com.example.demo.Service.userService;
@@ -33,6 +36,8 @@ import com.google.gson.Gson;
 public class UserController extends baseContoller {
 
 	Result result;	
+	
+	UserRepository userRepository;
 	
 	 /** 
 	  * 
@@ -58,14 +63,17 @@ public class UserController extends baseContoller {
 	  * 
 	  **/
 	 @GetMapping("/")
-	 public Map getAllUserList(HttpServletRequest req) {
+	 public Result getAllUserList(HttpServletRequest req) {
 		 	
 		 	//init
-		 	Map resMap = new HashMap();
-		 	Gson gs = new Gson();
+		 	Result _result = new Result();
+		 	List<User> _user = userRepository.findAll();		 	
+		 
+			_result.setdata(_user);
+			_result.setcode(200);
+			_result.setmsg("ok");		 	
 		 	
-		 	
-			return resMap;
+			return _result;
 	 }
 	 
 	 /** 
@@ -74,14 +82,17 @@ public class UserController extends baseContoller {
 	  * 
 	  **/
 	 @GetMapping("/{userId}")
-	 public Map getUser(@PathVariable("userId") Long userId,HttpServletRequest req) {
+	 public Result getUser(@PathVariable("userId") Long userId,HttpServletRequest req) {
 		 	
 		 	//init
-		 	Map resMap = new HashMap();
-		 	Gson gs = new Gson();
+		 	Result _result = new Result();
+		 	Optional<User> _user = userRepository.findById(userId);
+		 
+			_result.setdata(_user);
+			_result.setcode(200);
+			_result.setmsg("ok");		 	
 		 	
-	        
-	        return resMap;
+			return _result;
 	 }
 	 
 	 /** 

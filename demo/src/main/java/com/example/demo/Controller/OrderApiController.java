@@ -27,9 +27,7 @@ import com.google.gson.Gson;
 
 /**
  * 	寫法 : 請求 用 RequestParam , JPA , Repository
- * 	然後 JWT 做驗證
- *       註:還沒寫完 還差 JWT驗證
- *       
+ * 	
  *  produces={"application/json;charset=UTF-8"}
  *  可以設定返回的response的媒體類型和文字的編碼,ex:返回為JSON格式,字元編碼為UTF-8
  *         
@@ -40,16 +38,22 @@ import com.google.gson.Gson;
  */
 
 @RestController
-@RequestMapping("/Order")
-public class OrderController extends baseContoller {
-	
+@RequestMapping("/OrderApi")
+public class OrderApiController extends baseContoller {
+
 	 private orderService orderS;
-	 
-	 @RequestMapping(value={"/testforPage"})
-	 public String testforPage() {
-		 		 
-	     return "testforPage";
+		
+	 /** 
+	  * 
+	  * API : test
+	  * 
+	  **/
+	 @RequestMapping(value={"/test"})
+	 public Result test() {
+		 
+	     return setTestFeedback();
 	 }
+	 
 	 
 	 @RequestMapping(value={"/"},
 			 produces={"application/json;charset=UTF-8"}, 
@@ -75,17 +79,16 @@ public class OrderController extends baseContoller {
 	 @ResponseBody
 	 public void addOrder(@RequestBody Order order){
 		 	
-		 orderS.save(order);
-		 
+		 orderS.save(order);		 
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"}, 
 			 consumes = MediaType.APPLICATION_JSON_VALUE, 
 			 method = RequestMethod.PUT)
 	 @ResponseBody
-	 public void modifyOrderPut(@RequestBody Order order){
-		 
+	 public void modifyOrderPut(@RequestBody Order order){		 
 		 	 
+		 orderS.modify(order);		 
 	 }
 	 
 	 @RequestMapping(value={"/{orderId}"}, 
@@ -103,8 +106,7 @@ public class OrderController extends baseContoller {
 	 @ResponseBody
 	 public void deleteOrder(@PathVariable long orderId) {
 		
-		 orderS.delete(orderId);
-		 
+		 orderS.delete(orderId);		 
 	 }
 	 
 }

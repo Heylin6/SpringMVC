@@ -8,10 +8,7 @@ import com.example.demo.Model.Member;
 import com.example.demo.Utilitylib.Directionarylib;
 
 @Repository
-public class MemberDao {
-
-	@Autowired
-	JdbcTemplate jdbcTemplate;
+public class MemberDao extends baseDao {
 	
 	public void addMember(Member member) {	
 		
@@ -19,6 +16,5 @@ public class MemberDao {
 		  jdbcTemplate.update("INSERT INTO member(account,password,createTime,modifyTime,createMid,modifyMid,status) "
 		  		+ "VALUES (?,?,NOW(),?,?,?,?)",
 		  		member.getaccount(), member.getpassword(),"","","","",Directionarylib.Status_nouse);
-	  }
-	
+	  }	
 }

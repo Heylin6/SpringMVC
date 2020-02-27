@@ -22,11 +22,15 @@ import java.util.List;
 @Entity
 @Table(name = "member")
 public class Member implements Serializable {
+
+	public Member() {
+		
+	}
 	
 	@Id
 	@Column(name = "mid")
-	@GeneratedValue(strategy=GenerationType.AUTO, generator = "user_seq")
-	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.AUTO, generator = "member_seq")
+	@SequenceGenerator(name = "member_seq", sequenceName = "member_seq", allocationSize = 1)
 	private long mid;
 	
 	@Column(name="account")
@@ -35,6 +39,8 @@ public class Member implements Serializable {
 	private String account;
 	
 	@Column(name="password")
+	@NotNull
+    @Size(min = 10, max = 200)
 	private String password;
 	
 	@Column(name="createtime")
@@ -61,11 +67,6 @@ public class Member implements Serializable {
 //            joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "mid")},
 //            inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "aid")})
 //    private List<Authority> authorities;
-
-	public Member() {
-		
-	}
-	
 
 	public Member(String username, String password) {
 	

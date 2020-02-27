@@ -68,23 +68,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
            .ignoring().antMatchers("/favicon.ico");
     }
 	
-//	@Override
-//	protected void configure(HttpSecurity httpSecurity) throws Exception {
-//				
-//		//初始建置會先經過這邊		
-//
-//		httpSecurity
-//		.authorizeRequests()
-//		.antMatchers("/authenticate","/login","/doLogin","/logout","/login-error","/Chat","/Order/test")
-//				.permitAll().anyRequest().authenticated()
-////		.and().formLogin().loginPage("/login").failureUrl("/login-error")
-////        .and().logout().logoutSuccessUrl("/index")
-//        .and().csrf().disable().sessionManagement()
-//		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//		
-//		httpSecurity
-//		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-//	}
 	
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -103,13 +86,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity
 		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
-//	
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {	
-//		
-//		  auth.userDetailsService(jwtUserDetailsService);
-//	}
-//	
 	
 //	public PasswordEncoder passwordEncoder() {
 //		
