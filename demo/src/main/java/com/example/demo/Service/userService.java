@@ -2,101 +2,74 @@ package com.example.demo.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.Dao.UserRepository;
 import com.example.demo.Model.User;
-import com.example.demo.Pagination.userPagination;
+import com.example.demo.Model.ResPackage.ResultLUsers;
+import com.example.demo.Model.ResPackage.ResultUser;
 
-public class userService extends baseService{	
+@Service
+public class userService extends baseService {
+	
+	@Autowired
+	UserRepository userRepository;	
 
-	public Integer SEV_addUser(Map sev_m) {
+	public void save(User user) {
 		
-		try {
-			
-			//寫入新增邏輯
-			
-			return 1;
-		}
-		catch(Exception ex) {
-			
-	 		//寫入錯誤紀錄
-	 		//
-			
-			return 99;
-		}
+		userRepository.save(user);		
 	}
 	
-	public Integer SEV_modifyUser(Map sev_m) {
+	public void modify(User user) {
 		
-		try {
-			
-			//寫入更改邏輯
-			
-			return 1;
-		}
-		catch(Exception ex) {
-			
-	 		//寫入錯誤紀錄
-	 		//
-			
-			return 99;
-		}
-	}
-
-	public static Integer SEV_deleteUser(Map sev_m) {
-		
-		try {
-			
-			//寫入刪除邏輯
-			
-			return 1;
-		}
-		catch(Exception ex) {
-			
-	 		//寫入錯誤紀錄
-	 		//
-			
-			return 99;
-		}
-	}
-
-	public Map SEV_getUserList(Map busi_m) {
-		
-		try {
-			Map res = null;
-			
-			//寫入撈取邏輯
-			
-			return res;
-		}
-		catch(Exception ex) {
-			
-	 		//寫入錯誤紀錄
-	 		//
-			
-			return null;
-		}
-	}
-
-	public Map SEV_getUserOne(Map busi_m) {
-		
-		try {
-			Map res = null;
-			
-			//寫入撈取邏輯
-			
-			return res;
-		}
-		catch(Exception ex) {
-			
-	 		//寫入錯誤紀錄
-	 		//
-			
-			return null;
-		}
+		userRepository.save(user);		
 	}
 
 	public List<User> getAllUserList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return userRepository.findAll();
+	}
+	
+	public Optional<User> getUser(long userId) {
+		
+		return userRepository.findById(userId);
+	}
+
+	public void delete(long useerId) {
+		
+		userRepository.deleteById(useerId);		
+	}
+	
+	public ResultUser setResultUser(Optional<User> _user,
+			int statusCode,
+			String message,
+			boolean issuccess) {
+		
+		ResultUser _result = new ResultUser();
+		 
+		_result.setUser(_user);
+		_result.setcode(statusCode);
+		_result.setissuccess(issuccess);
+		_result.setmsg(message);
+			
+		return _result;
+	}
+
+	public ResultLUsers setResultUserList(List<User> _userL,
+			int statusCode,
+			String message,
+			boolean issuccess) {
+		
+		ResultLUsers _result = new ResultLUsers();
+		 
+		_result.setUsers(_userL);
+		_result.setcode(statusCode);
+		_result.setissuccess(issuccess);
+		_result.setmsg(message);
+		
+		return _result;
 	}
 }

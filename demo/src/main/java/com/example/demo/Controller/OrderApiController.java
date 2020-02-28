@@ -23,7 +23,7 @@ import com.example.demo.Dao.OrderRepository;
 import com.example.demo.Model.Order;
 import com.example.demo.Model.ResPackage.Result;
 import com.example.demo.Model.ResPackage.ResultOrder;
-import com.example.demo.Model.ResPackage.ResultOrders;
+import com.example.demo.Model.ResPackage.ResultLOrders;
 import com.example.demo.Service.orderService;
 import com.google.gson.Gson;
 
@@ -62,18 +62,18 @@ public class OrderApiController extends baseContoller {
 			 produces={"application/json;charset=UTF-8"}, 
 			 method = RequestMethod.GET)
 	 @ResponseBody
-	 public ResultOrders getAllOrderList() {
+	 public ResultLOrders getAllOrderList() {
 
-		 ResultOrders res = null;
+		 ResultLOrders res = null;
 		 List<Order> _orderL = orderS.getAllOrderList();
-		 if(_orderL != null)
+		 if(_orderL.size()>0)
 		 {
-			 res = orderS.setResultOrderList(_orderL,200,"ok");
+			 res = orderS.setResultOrderList(_orderL,200,"ok",true);
 			 return res;
 		 }
 		 else
 		 {
-			 res = orderS.setResultOrderList(null,99,"no data");
+			 res = orderS.setResultOrderList(null,99,"no data",false);
 			 return res;
 		 }		  
 	 }
@@ -88,12 +88,12 @@ public class OrderApiController extends baseContoller {
 		 Optional<Order> _order = orderS.getOrder(orderId);
 		 if(_order != null)
 		 {
-			 res = orderS.setResultOrder(_order,200,"ok");
+			 res = orderS.setResultOrder(_order,200,"ok",true);
 			 return res;
 		 }
 		 else
 		 {
-			 res = orderS.setResultOrder(null,99,"no data");
+			 res = orderS.setResultOrder(null,99,"no data",false);
 			 return res;
 		 }		 
 	 }

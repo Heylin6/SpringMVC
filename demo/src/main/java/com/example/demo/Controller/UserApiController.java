@@ -25,22 +25,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Dao.UserRepository;
 import com.example.demo.Model.User;
 import com.example.demo.Model.ResPackage.Result;
+import com.example.demo.Model.ResPackage.ResultUser;
 import com.example.demo.Service.userService;
 import com.google.gson.Gson;
 
 /**
- * 	寫法 : 請求 HttpServletRequest 轉成json解析
+ * 	
  */
 
 @RestController
-@Controller
 @RequestMapping("/UserApi")
 public class UserApiController extends baseContoller {
-	
+
 	@Autowired
-	UserRepository userRepository;
-	
 	private userService userS;
+	
 	 /** 
 	  * 
 	  * API : test
@@ -65,14 +64,14 @@ public class UserApiController extends baseContoller {
 	
 		Result res = null;
 		List<User> _userL = userS.getAllUserList();
-		if(_userL != null)
+		if(_userL.size()>0)
 		{
-			res = userS.setResultList(_userL,200,"ok");
+			res = userS.setResultUserList(_userL,200,"ok",true);
 			return res;
 		}
 		else
 		{
-			res = userS.setResultList(null,99,"no data");
+			res = userS.setResultUserList(null,99,"no data",false);
 			return res;
 		}
 	 }
@@ -83,17 +82,21 @@ public class UserApiController extends baseContoller {
 	  * 
 	  **/
 	 @GetMapping("/{userId}")
-	 public Result getUser(@PathVariable("userId") Long userId,HttpServletRequest req) {
+	 public ResultUser getUser(@PathVariable("userId") Long userId,HttpServletRequest req) {
 		 	
 		 	//init
-		 	Result _result = new Result();
-		 	Optional<User> _user = userRepository.findById(userId);
-		 
-			_result.setissuccess(true);
-			_result.setcode(200);
-			_result.setmsg("ok");		 	
-		 	
-			return _result;
+		 	ResultUser res = null;
+		 	Optional<User> _user = userS.getUser(userId);
+			if(_user != null)
+			{
+				res = userS.setResultUser(_user,200,"ok",true);
+				return res;
+			}
+			else
+			{
+				res = userS.setResultUser(null,99,"no data",false);
+				return res;
+			}	
 	 }
 	 
 	 /** 
@@ -102,14 +105,13 @@ public class UserApiController extends baseContoller {
 	  * 
 	  **/
 	 @PostMapping("/")
-	 public Map addUser(User _user){
+	 public Result addUser(User _user){
 		 	
-		 	//init
-		 	Map resMap = new HashMap();
-		 	Gson gs = new Gson();
-
-
-	        return resMap;
+		 Result res = null;
+		 userS.save(_user);
+		 
+		 res = userS.setResult(null,200,"has save");
+		 return res;
 	 }
 	 
 	 /** 
@@ -118,14 +120,13 @@ public class UserApiController extends baseContoller {
 	  * 
 	  **/
 	 @PutMapping("/{userId}")	 
-	 public Map modifyUserPut(HttpServletRequest req) {
+	 public Result modifyUserPut(User _user) {
 		 	
-		 	//init
-		 	Map resMap = new HashMap();
-		 	Gson gs = new Gson();
-		 	
-
-	        return resMap;
+		 Result res = null;
+		 userS.modify(_user);	
+		 
+		 res = userS.setResult(null,200,"has modify");
+		 return res;
 	 }
 	 
 	 /** 
@@ -134,12 +135,13 @@ public class UserApiController extends baseContoller {
 	  * 
 	  **/
 	 @PatchMapping("/{userId}")
-	 public Map modifyUserPatch(HttpServletRequest req) {
+	 public Result modifyUserPatch(User _user) {
 		 	
-		 	//init
-		 	Map resMap = new HashMap();
-		 	Gson gs = new Gson();
-	        return resMap;
+		 Result res = null;
+		 userS.modify(_user);	
+		 
+		 res = userS.setResult(null,200,"has modify");
+		 return res;
 	 }
 	 
 	 /** 
@@ -148,13 +150,12 @@ public class UserApiController extends baseContoller {
 	  * 
 	  **/
 	 @DeleteMapping("/{userId}")
-	 public Map deleteUser(HttpServletRequest req) {
+	 public Result deleteUser(long userId) {
 		
-		 	//init
-		 	Map resMap = new HashMap();
-		 	Gson gs = new Gson();
-		 	
-	        
-	        return resMap;
+		 Result res = null;
+		 userS.delete(userId);		 
+		 
+		 res = userS.setResult(null,200,"delete ok");
+		 return res;
 	 }
 }

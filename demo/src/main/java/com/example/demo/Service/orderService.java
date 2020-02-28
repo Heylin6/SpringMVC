@@ -11,7 +11,7 @@ import com.example.demo.Dao.OrderRepository;
 import com.example.demo.Model.Order;
 import com.example.demo.Model.ResPackage.Result;
 import com.example.demo.Model.ResPackage.ResultOrder;
-import com.example.demo.Model.ResPackage.ResultOrders;
+import com.example.demo.Model.ResPackage.ResultLOrders;
 
 @Service
 public class orderService extends baseService { 
@@ -49,23 +49,31 @@ public class orderService extends baseService {
 		orderRepository.deleteById(orderId);		
 	}
 	
-	public ResultOrder setResultOrder(Optional<Order> _Order, int statusCode, String message) {
+	public ResultOrder setResultOrder(Optional<Order> _Order, 
+			int statusCode, 
+			String message,
+			boolean issuccess) {
 		
-		ResultOrder _result = new ResultOrder();
+		 ResultOrder _result = new ResultOrder();
 		 
 			_result.setOrder(_Order);
 			_result.setcode(statusCode);
+			_result.setissuccess(issuccess);
 			_result.setmsg(message);
 			
 		 return _result;
 	}
 
-	public ResultOrders setResultOrderList(List<Order> _OrderL, int statusCode, String message) {
+	public ResultLOrders setResultOrderList(List<Order> _OrderL, 
+			int statusCode, 
+			String message,
+			boolean issuccess) {
 		
-		ResultOrders _result = new ResultOrders();
+		 ResultLOrders _result = new ResultLOrders();
 		 
 			_result.setOrders(_OrderL);
 			_result.setcode(statusCode);
+			_result.setissuccess(issuccess);
 			_result.setmsg(message);
 			
 		 return _result;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.demo.Model.Order;
 
-public class ResultOrders extends Result {
+public class ResultLOrders extends ResultL {
 	
 	private List<Order> Orders;	
 	

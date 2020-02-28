@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.demo.Model.User;
 
-public class ResultUsers extends Result {
+public class ResultLUsers extends ResultL {
 	
 	private List<User> Users;	
 	
