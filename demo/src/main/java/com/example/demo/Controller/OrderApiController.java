@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Dao.OrderRepository;
 import com.example.demo.Model.Order;
-import com.example.demo.Model.Result;
+import com.example.demo.Model.ResPackage.Result;
+import com.example.demo.Model.ResPackage.ResultOrder;
+import com.example.demo.Model.ResPackage.ResultOrders;
 import com.example.demo.Service.orderService;
 import com.google.gson.Gson;
 
@@ -40,7 +42,8 @@ import com.google.gson.Gson;
 @RestController
 @RequestMapping("/OrderApi")
 public class OrderApiController extends baseContoller {
-
+	
+	 @Autowired
 	 private orderService orderS;
 		
 	 /** 
@@ -59,18 +62,18 @@ public class OrderApiController extends baseContoller {
 			 produces={"application/json;charset=UTF-8"}, 
 			 method = RequestMethod.GET)
 	 @ResponseBody
-	 public Result getAllOrderList() {
+	 public ResultOrders getAllOrderList() {
 
-		 Result res = null;
+		 ResultOrders res = null;
 		 List<Order> _orderL = orderS.getAllOrderList();
 		 if(_orderL != null)
 		 {
-			 res = orderS.setResultList(_orderL,200,"ok");
+			 res = orderS.setResultOrderList(_orderL,200,"ok");
 			 return res;
 		 }
 		 else
 		 {
-			 res = orderS.setResultList(null,99,"no data");
+			 res = orderS.setResultOrderList(null,99,"no data");
 			 return res;
 		 }		  
 	 }
@@ -79,18 +82,18 @@ public class OrderApiController extends baseContoller {
 			 produces={"application/json;charset=UTF-8"}, 
 			 method = RequestMethod.GET)
 	 @ResponseBody
-	 public Result getOrder(@PathVariable long orderId) {
+	 public ResultOrder getOrder(@PathVariable long orderId) {
 		 
-		 Result res = null;
+		 ResultOrder res = null;
 		 Optional<Order> _order = orderS.getOrder(orderId);
 		 if(_order != null)
 		 {
-			 res = orderS.setResult(_order,200,"ok");
+			 res = orderS.setResultOrder(_order,200,"ok");
 			 return res;
 		 }
 		 else
 		 {
-			 res = orderS.setResult(null,99,"no data");
+			 res = orderS.setResultOrder(null,99,"no data");
 			 return res;
 		 }		 
 	 }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.example.demo.Model.Result;
+import com.example.demo.Model.ResPackage.Result;
 
 
 public abstract class baseContoller {
@@ -13,9 +13,8 @@ public abstract class baseContoller {
 	public Result setTestResult() {
 		
 		Result _result = new Result();
-		Map _user = null;
 		 
-		_result.setdata(_user);
+		_result.setissuccess(true);
 		_result.setcode(200);
 		_result.setmsg("ok");
 		 

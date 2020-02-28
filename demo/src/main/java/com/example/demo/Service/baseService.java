@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.example.demo.Model.Result;
+import com.example.demo.Model.ResPackage.Result;
 
 public class baseService {
 	
@@ -29,7 +29,7 @@ public class baseService {
 		
 		 Result _result = new Result();
 		 
-			_result.setdata(_T);
+		 	_result.setissuccess(true);
 			_result.setcode(statusCode);
 			_result.setmsg(message);
 			
@@ -40,7 +40,7 @@ public class baseService {
 		
 		 Result _result = new Result();
 		 
-			_result.setdata(_TL);
+		 	_result.setissuccess(true);
 			_result.setcode(statusCode);
 			_result.setmsg(message);
 			

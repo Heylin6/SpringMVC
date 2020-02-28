@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Dao.UserRepository;
-import com.example.demo.Model.Result;
 import com.example.demo.Model.User;
+import com.example.demo.Model.ResPackage.Result;
 import com.example.demo.Service.userService;
 import com.google.gson.Gson;
 
@@ -52,7 +52,7 @@ public class UserController extends baseContoller {
 		 Result _result = new Result();
 		 Map _user = null;
 		 
-		 _result.setdata(_user);
+		 _result.setissuccess(true);
 		 _result.setcode(200);
 		 _result.setmsg("ok");
 		 
@@ -71,7 +71,7 @@ public class UserController extends baseContoller {
 		 	Result _result = new Result();
 		 	List<User> _user = userRepository.findAll();		 	
 		 
-			_result.setdata(_user);
+			_result.setissuccess(true);
 			_result.setcode(200);
 			_result.setmsg("ok");		 	
 		 	
@@ -90,7 +90,7 @@ public class UserController extends baseContoller {
 		 	Result _result = new Result();
 		 	Optional<User> _user = userRepository.findById(userId);
 		 
-			_result.setdata(_user);
+			_result.setissuccess(true);
 			_result.setcode(200);
 			_result.setmsg("ok");		 	
 		 	

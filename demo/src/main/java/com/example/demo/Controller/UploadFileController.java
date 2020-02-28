@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
 
-import com.example.demo.Model.Result;
+import com.example.demo.Model.ResPackage.Result;
 import com.example.demo.Service.uploadfileService;
 
 

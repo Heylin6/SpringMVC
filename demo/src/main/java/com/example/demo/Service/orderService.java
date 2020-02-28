@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Dao.OrderRepository;
 import com.example.demo.Model.Order;
-import com.example.demo.Model.Result;
+import com.example.demo.Model.ResPackage.Result;
+import com.example.demo.Model.ResPackage.ResultOrder;
+import com.example.demo.Model.ResPackage.ResultOrders;
 
 @Service
 public class orderService extends baseService { 
@@ -46,6 +48,26 @@ public class orderService extends baseService {
 		
 		orderRepository.deleteById(orderId);		
 	}
+	
+	public ResultOrder setResultOrder(Optional<Order> _Order, int statusCode, String message) {
+		
+		ResultOrder _result = new ResultOrder();
+		 
+			_result.setOrder(_Order);
+			_result.setcode(statusCode);
+			_result.setmsg(message);
+			
+		 return _result;
+	}
 
-
+	public ResultOrders setResultOrderList(List<Order> _OrderL, int statusCode, String message) {
+		
+		ResultOrders _result = new ResultOrders();
+		 
+			_result.setOrders(_OrderL);
+			_result.setcode(statusCode);
+			_result.setmsg(message);
+			
+		 return _result;
+	}
 }

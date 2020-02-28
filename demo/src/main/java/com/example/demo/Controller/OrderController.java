@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Dao.OrderRepository;
 import com.example.demo.Model.Order;
-import com.example.demo.Model.Result;
+import com.example.demo.Model.ResPackage.Result;
 import com.example.demo.Service.orderService;
 import com.google.gson.Gson;
 

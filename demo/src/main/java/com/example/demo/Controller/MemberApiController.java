@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.Dao.MemberRepository;
 import com.example.demo.Model.Member;
-import com.example.demo.Model.Result;
+import com.example.demo.Model.ResPackage.Result;
 
 @Controller
 public class MemberApiController extends baseContoller {
@@ -32,7 +32,7 @@ public class MemberApiController extends baseContoller {
 	 }
 	 
 	 @PostMapping("/MemberApi/editMember")
-	 public Result<?> addMemberPage(Member member){
+	 public Result addMemberPage(Member member){
 
 		 Result _result = new Result();
 

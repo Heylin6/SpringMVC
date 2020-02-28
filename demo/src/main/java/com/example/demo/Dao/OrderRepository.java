@@ -26,9 +26,9 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
 			+ " from `order`",nativeQuery = true)
 	List<Order> findAll();
 	
-	@Query(value=
-			  "select "
-			+ "orderid,createuser,createtime,status,memo"
-			+ " from `order` where orderid =?1" ,nativeQuery = true)
-	Optional<Order> findByIdbyString(long orderId);	
+//	@Query(value=
+//			  "select "
+//			+ "orderid,createuser,createtime,status,memo"
+//			+ " from `order` where orderid =?1" ,nativeQuery = true)
+//	Optional<Order> findByIdbyString(long orderId);	
 }

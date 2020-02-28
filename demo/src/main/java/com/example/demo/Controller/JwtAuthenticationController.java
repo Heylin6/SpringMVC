@@ -26,7 +26,7 @@ import com.example.demo.Dao.MemberRepository;
 import com.example.demo.Model.AuthenticationResponse;
 import com.example.demo.Model.JwtUser;
 import com.example.demo.Model.Member;
-import com.example.demo.Model.Result;
+import com.example.demo.Model.ResPackage.Result;
 import com.example.demo.Service.JwtAuthenticationService;
 import com.example.demo.Service.jwtuserdetailsService;
 import com.example.demo.Setting.JwtTokenConfig;
