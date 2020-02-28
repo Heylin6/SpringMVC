@@ -1,7 +1,7 @@
 CREATE TABLE `member` (
 	`mid` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`account` VARCHAR(50) NOT NULL,
-	`password` VARCHAR(100) NOT NULL COLLATE 'utf8_unicode_ci',
+	`password` VARCHAR(200) NOT NULL COLLATE 'utf8_unicode_ci',
 	`createtime` VARCHAR(13) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
 	`modifytime` VARCHAR(13) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
 	`createmid` VARCHAR(40) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
