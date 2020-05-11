@@ -89,6 +89,9 @@ https://www.webteach.tw/?p=268
 
 其他:
 
+thymeleaf模板
+
+https://tomoya92.github.io/2017/03/09/thymeleaf-layout/
 
 單元測試 Assert相關
 
@@ -115,6 +118,10 @@ docker
 https://kknews.cc/zh-tw/tech/oparkpm.html
 
 https://blog.csdn.net/tidu2chengfo/article/details/84892915
+
+-過程中 Installation failed
+
+https://www.cnblogs.com/zhiqsyr/p/12364124.html
 
 -docker指令
 
